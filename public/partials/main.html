@@ -1,0 +1,15 @@
+<input class="searchSort" type="text" ng-model="search" placeholder="Search">
+<label class="searchSort" for="sort">Sort: </label>
+<select name="sort" ng-model="sort" ng-init="sort='date'">
+  <option value="name">Name</option>
+  <option value="el">Elevation</option>
+  <option value="trail">Trail Length</option>
+  <option value="diff">Difficulty</option>
+</select>
+
+<div class="mountain" ng-repeat="mountain in view.mountains">
+  <!-- <img class="mtPic" src="{{mountain.imgURL}}"> -->
+  <div class="mountainInfo">
+    <p>{{mountain.address.peak}}</p><p>Lat: {{mountain.lat}}</p><p>Lon: {{mountain.lon}}</p>
+  </div>
+</div>
