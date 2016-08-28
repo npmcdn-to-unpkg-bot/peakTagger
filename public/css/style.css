@@ -73,18 +73,18 @@ header h2 {
   margin-left: 80px;
 }
 
-.mountain {
+.peak {
   margin: 40px;
 }
 
-.mountainInfo {
+.peakInfo {
   vertical-align: top;
   margin-left: 20px;
   display: flex;
   justify-content: space-around;
 }
 
-.mountainInfo p {
+.peakInfo p {
   margin: 20px;
 }
 

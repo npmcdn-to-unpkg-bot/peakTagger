@@ -13,3 +13,7 @@ app.service('locateService', function() {
   // SAVES CURRENT POSITION
   this.position = {};
 });
+
+app.service('peakService', function() {
+  this.osm_id;
+})

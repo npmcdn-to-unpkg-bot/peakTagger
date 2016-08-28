@@ -8,16 +8,15 @@ app.controller('HomeController', function($scope, locateService) {
   });
 });
 
-app.controller('MainController', function($scope, $http, locateService) {
+app.controller('MainController', function($scope, $http, locateService, peakService) {
   $scope.view = {};
   var lat = locateService.position.coords.latitude, lon = locateService.position.coords.longitude;
-  // GETS MOUNTAIN DATA FROM INTERNAL API
-  var url = `/${lat}/${lon}`;
-  console.log(url);
-  $http.get(url).then(function(data) {
-    $scope.view.mountains = data.data;
-    console.log(data);
+  $http.get(`/peaksearch/${lat}/${lon}`).then(function(data) { // GETS MOUNTAIN DATA FROM INTERNAL API
+    $scope.view.peaks = data.data;
   })
+  $scope.peakInit = function(osm_id) {
+    peakService.osm_id = osm_id;
+  }
 });
 
 app.controller('MapController', function($scope, locateService) {
@@ -26,3 +25,12 @@ app.controller('MapController', function($scope, locateService) {
   var lng = locateService.position.coords.longitude;
   $scope.view.map = { center: { latitude: lat, longitude: lng }, zoom: 13 };
 });
+
+app.controller('PeakController', function($scope, $http, peakService) {
+  $scope.view = {};
+  var osm_id = peakService.osm_id;
+  $http.get(`/peaklookup/${osm_id}`).then(function(data) { // GETS DATA ON INDIVIDUAL PEAK
+    $scope.view.peak = data.data;
+    console.log(data);
+  })
+})

@@ -13,10 +13,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "MainController",
       templateUrl: "partials/main.html"
     })
-    .state('map', {
-      url: '/map',
-      controller: "MapController",
-      templateUrl: "partials/map.html"
+    .state('peak', {
+      url: '/peak',
+      controller: "PeakController",
+      templateUrl: "partials/peak.html"
     })
     $locationProvider.html5Mode(true);
 });
