@@ -1,11 +1,11 @@
 module.exports = {
 
   development: {
-    client: 'postgres',
+    client: 'pg',
     connection: 'postgres://localhost:5432/peaktagger'
   },
   testing: {
-    client: 'postgres',
+    client: 'pg',
     connection: process.env.DATABASE_URL
   }
 };
