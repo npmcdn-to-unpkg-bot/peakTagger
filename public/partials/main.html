@@ -2,15 +2,6 @@
 
 <h1>Peaks Near you:</h1>
 
-<input class="searchSort" type="text" ng-model="search" placeholder="Search">
-<label class="searchSort" for="sort">Sort: </label>
-<select name="sort" ng-model="sort" ng-init="sort='date'">
-  <option value="name">Name</option>
-  <option value="el">Elevation</option>
-  <option value="trail">Trail Length</option>
-  <option value="diff">Difficulty</option>
-</select>
-
 <div class="peak" ng-repeat="peak in view.peaks">
   <div class="peakInfo">
     <a href="/peak" ng-click="peakInit(peak.osm_id)">{{peak.address.peak}}</a><p>Lat: {{peak.lat}}</p><p>Lon: {{peak.lon}}</p>

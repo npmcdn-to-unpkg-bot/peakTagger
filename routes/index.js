@@ -20,23 +20,28 @@ router.get('/peaksearch/:lat/:lon', function(req, res, next) {
 });
 
 router.get('/peaklookup/:osm_id', function(req, res, next) {
-
-  
-  request(`https://www.openstreetmap.org/api/0.6/node/${req.params.osm_id}`, function (error, response, body) {
-    if (!error, response.statusCode === 200) {
-      var doc = new DOMParser().parseFromString(body, 'text/xml');
-      var nodes = xpath.select("//node", doc);
-      var tags = xpath.select("//tag", doc);
-      var peak = {};
-      peak.osm_id = nodes[0].attributes[0].value;
-      peak.lat = nodes[0].attributes[7].value;
-      peak.lon = nodes[0].attributes[8].value;
-      for (var i = 0; i < tags.length; i++) {
-        if (tags[i].attributes[0].value === 'ele') peak.ele = tags[i].attributes[1].value;
-        if (tags[i].attributes[0].value === 'name') peak.name = tags[i].attributes[1].value;
-      }
-      console.log(peak);
+  knex('peaks').where('osm_id', req.params.osm_id).first().then(function(peak) {
+    if (peak) {
       res.json(peak)
+    } else {
+      request(`https://www.openstreetmap.org/api/0.6/node/${req.params.osm_id}`, function (error, response, body) {
+        if (!error, response.statusCode === 200) {
+          var doc = new DOMParser().parseFromString(body, 'text/xml');
+          var nodes = xpath.select("//node", doc);
+          var tags = xpath.select("//tag", doc);
+          var peak = {};
+          peak.osm_id = parseInt(nodes[0].attributes[0].value);
+          peak.lat = nodes[0].attributes[7].value;
+          peak.lon = nodes[0].attributes[8].value;
+          for (var i = 0; i < tags.length; i++) {
+            if (tags[i].attributes[0].value === 'ele') peak.ele = parseInt(tags[i].attributes[1].value);
+            if (tags[i].attributes[0].value === 'name') peak.name = tags[i].attributes[1].value;
+          }
+          knex('peaks').insert(peak).then(function() {
+            res.json(peak);
+          });
+        }
+      })
     }
   })
 });

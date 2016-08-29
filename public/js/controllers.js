@@ -31,6 +31,5 @@ app.controller('PeakController', function($scope, $http, peakService) {
   var osm_id = peakService.osm_id;
   $http.get(`/peaklookup/${osm_id}`).then(function(data) { // GETS DATA ON INDIVIDUAL PEAK
     $scope.view.peak = data.data;
-    console.log(data);
   })
 })

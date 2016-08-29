@@ -8,23 +8,24 @@ html * {
 /* HEADER */
 
 header {
-  padding: 2em 3em;
+  padding: .2em;
   background-color: #fff;
   border-bottom: 1px solid lightblue;
 }
 
 .nav {
   float: left;
-  margin: 10px;
+  margin: 40px;
 }
 
 .auth {
   float: right;
-  margin: 10px;
+  margin: 40px;
 }
 
 .nav a, .auth a {
   margin: 10px;
+  font-size: 1.2em;
   text-decoration: none;
   color: #000;
 }
@@ -33,9 +34,9 @@ header {
   color: #999;
 }
 
-header h2 {
+header .logo {
   margin: 0 auto;
-  width: 210px;
+  width: 360px;
 }
 
 /* HOME */
@@ -57,7 +58,7 @@ header h2 {
 
 /*.jumbo img {
   width: 100%;
-  height: 100%;
+  height: 100%;om 
   position: relative;
   z-index: -10;
 }*/
