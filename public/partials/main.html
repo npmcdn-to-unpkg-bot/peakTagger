@@ -1,18 +1,21 @@
-<div class="map">
-  <ui-gmap-google-map center='view.map.center' zoom='view.map.zoom' options='view.options'>
-    <!-- <ui-gmap-marker ng-repeat='peak in view.peaks'
-                    idKey='AIzaSyChjSUhv_DsG4b_zS9XpI4WTwf0A0BxmCU'
-                    coords='{ latitude: peak.latitude, longitude: peak.longitude }'
-                    >
+<ui-gmap-google-map
+  center='view.map.center'
+  zoom='view.map.zoom'
+  options='view.options'>
 
-    </ui-gmap-marker> -->
-  </ui-gmap-google-map>
-</div>
+  <ui-gmap-markers
+
+    models='view.markers'
+    coords="'coords'">
+
+  </ui-gmap-markers>
+
+</ui-gmap-google-map>
 
 <div class="peaks">
   <div class="peak" ng-repeat="peak in view.peaks">
     <div class="peakInfo">
-      <a href="/peak" ng-click="peakInit(peak.osm_id)">{{peak.address.peak}}</a>
+      <a href="/peak" ng-click="peakSelect(peak.osm_id, peak.lat, peak.lon)">{{peak.address.peak}}</a>
     </div>
   </div>
 </div>

@@ -9,6 +9,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-google-maps": "^2.3.4",
+    "angular-openlayers-directive": "^1.15.2",
     "angular-simple-logger": "^0.1.7",
     "body-parser": "~1.13.2",
     "bootstrap": "^3.3.7",
@@ -21,11 +22,14 @@
     "jQuery": "^1.7.4",
     "jade": "~1.11.0",
     "knex": "^0.11.10",
+    "leaflet": "^0.7.7",
     "lodash": "^4.15.0",
     "morgan": "~1.6.1",
+    "ng-sanitize": "0.0.2",
     "pg": "^6.1.0",
     "request": "^2.74.0",
     "serve-favicon": "~2.3.0",
+    "ui-leaflet": "^1.0.1",
     "unirest": "^0.5.1",
     "xmldom": "^0.1.22",
     "xpath": "0.0.23"

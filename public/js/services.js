@@ -16,4 +16,5 @@ app.service('locateService', function() {
 
 app.service('peakService', function() {
   this.osm_id;
+  this.position = {};
 })

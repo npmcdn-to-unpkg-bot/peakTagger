@@ -1,4 +1,4 @@
-var app = angular.module('peakTagger', ['ui.router', 'uiGmapgoogle-maps']);
+var app = angular.module('peakTagger', ['ui.router', 'uiGmapgoogle-maps', 'openlayers-directive']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
@@ -19,4 +19,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "partials/peak.html"
     })
     $locationProvider.html5Mode(true);
+})
+.config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyChjSUhv_DsG4b_zS9XpI4WTwf0A0BxmCU',
+        libraries: 'weather,geometry,visualization'
+    });
 });
