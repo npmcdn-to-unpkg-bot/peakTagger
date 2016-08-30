@@ -1,9 +1,18 @@
-<h1>Search by zip code</h1>
+<div class="map">
+  <ui-gmap-google-map center='view.map.center' zoom='view.map.zoom' options='view.options'>
+    <!-- <ui-gmap-marker ng-repeat='peak in view.peaks'
+                    idKey='AIzaSyChjSUhv_DsG4b_zS9XpI4WTwf0A0BxmCU'
+                    coords='{ latitude: peak.latitude, longitude: peak.longitude }'
+                    >
 
-<h1>Peaks Near you:</h1>
+    </ui-gmap-marker> -->
+  </ui-gmap-google-map>
+</div>
 
-<div class="peak" ng-repeat="peak in view.peaks">
-  <div class="peakInfo">
-    <a href="/peak" ng-click="peakInit(peak.osm_id)">{{peak.address.peak}}</a><p>Lat: {{peak.lat}}</p><p>Lon: {{peak.lon}}</p>
+<div class="peaks">
+  <div class="peak" ng-repeat="peak in view.peaks">
+    <div class="peakInfo">
+      <a href="/peak" ng-click="peakInit(peak.osm_id)">{{peak.address.peak}}</a>
+    </div>
   </div>
 </div>

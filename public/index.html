@@ -13,7 +13,8 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
   <script type="text/javascript" src="/node_modules/lodash/lodash.min.js"></script>
   <script type="text/javascript" src="/node_modules/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
-  <script type="text/javascript" src="/node_modules/angular-google-maps/dist/angular-google-maps.min.js"></script>
+  <!-- <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script> -->
+  <script type="text/javascript" src="/node_modules/angular-google-maps/dist/angular-google-maps.min.js?key=AIzaSyChjSUhv_DsG4b_zS9XpI4WTwf0A0BxmCU"></script>
   <script type="text/javascript" src="js/app.js"></script>
   <script type="text/javascript" src="js/controllers.js"></script>
   <script type="text/javascript" src="js/directives.js"></script>
@@ -23,9 +24,7 @@
 <body>
   <header>
     <div class="nav">
-      <a href="/">Home</a>
-      <a href="/main">Mountains</a>
-      <a href="/map">Map</a>
+      <a href="/main">Nearby Peaks</a>
     </div>
     <div class="auth">
       <a href="/signout">Signout</a>
@@ -33,11 +32,14 @@
     <div>
     </div>
     <div class="logo">
-      <img src="/images/peak_tagger_logo.png">
+      <a href="/"><img src="/images/peak_tagger_logo.png"></a>
     </div>
   </header>
   <main ui-view>
 
   </main>
+  <footer>
+    <p>Copyright 2016 Peak Tagger</p>
+  </footer>
 </body>
 </html>

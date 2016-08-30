@@ -1,4 +1,5 @@
 app.controller('HomeController', function($scope, locateService) {
+// TODO BUILD COORDS INTO LOCAL STORAGE AND MAKE IT RUN FROM ANY PAGE/STATE
   new Promise(function(resolve) {
     locateService.locate(resolve);
   }).then(function(position) {
@@ -13,17 +14,13 @@ app.controller('MainController', function($scope, $http, locateService, peakServ
   var lat = locateService.position.coords.latitude, lon = locateService.position.coords.longitude;
   $http.get(`/peaksearch/${lat}/${lon}`).then(function(data) { // GETS MOUNTAIN DATA FROM INTERNAL API
     $scope.view.peaks = data.data;
+    console.log(data.data);
   })
+  $scope.view.map = { center: { latitude: lat, longitude: lon }, zoom: 12 };
+  $scope.view.options = { mapTypeId: 'terrain' };
   $scope.peakInit = function(osm_id) {
     peakService.osm_id = osm_id;
   }
-});
-
-app.controller('MapController', function($scope, locateService) {
-  $scope.view = {};
-  var lat = locateService.position.coords.latitude;
-  var lng = locateService.position.coords.longitude;
-  $scope.view.map = { center: { latitude: lat, longitude: lng }, zoom: 13 };
 });
 
 app.controller('PeakController', function($scope, $http, peakService) {
