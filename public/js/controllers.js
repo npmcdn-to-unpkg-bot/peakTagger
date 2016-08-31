@@ -13,10 +13,11 @@ app.controller('MainController', function($scope, $http, locateService, peakServ
   var lat = locateService.position.coords.latitude, lon = locateService.position.coords.longitude;
   $scope.view.map = { center: { latitude: lat, longitude: lon }, zoom: 12 };
   $scope.view.options = { mapTypeId: 'terrain' };
-  $scope.view.markers = [{id: 1, coords: {latitude: 40.0048947, longitude: -105.25381209}}]
-  // $scope.view.key = 'AIzaSyChjSUhv_DsG4b_zS9XpI4WTwf0A0BxmCU';
   $http.get(`/peaksearch/${lat}/${lon}`).then(function(data) { // GETS MOUNTAIN DATA FROM INTERNAL API
     $scope.view.peaks = data.data;
+    $scope.view.markers = data.data.map(function(peak, i) {
+      return {id: i, name: peak.address.peak, coords: {latitude: peak.lat, longitude: peak.lon}};
+    })
   })
   $scope.peakSelect = function(osm_id, lat, lon) {
     peakService.osm_id = osm_id;
@@ -29,10 +30,12 @@ app.controller('PeakController', function($scope, $http, peakService) {
   $scope.view.peak = {};
   var lat = parseFloat(peakService.position.lat), lon = parseFloat(peakService.position.lon);
   angular.extend($scope.view, {
-      center: { lat: lat, lon: lon, zoom: 14 }
+      center: { lat: lat, lon: lon, zoom: 15 }
   });
   var osm_id = peakService.osm_id;
   $http.get(`/peaklookup/${osm_id}`).then(function(data) { // GETS DATA ON INDIVIDUAL PEAK
     $scope.view.peak = data.data;
+    console.log(data.data);
+    $scope.view.peak.ele = Math.floor(data.data.ele * 3.2808);
   })
 });

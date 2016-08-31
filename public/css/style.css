@@ -77,7 +77,16 @@ header .logo {
 
 /* PEAK */
 
+.peakStats {
+  display: inline-block;
+  vertical-align: top;
+}
 
+.peakMap {
+  display: inline-block;
+  height: 600px;
+  width: 50%;
+}
 
 /* FOOTER */
 
