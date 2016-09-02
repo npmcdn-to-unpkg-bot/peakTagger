@@ -4,8 +4,9 @@
   options='view.options'>
 
   <ui-gmap-markers
-    models='view.markers'
-    coords="'coords'">
+    models='view.peaks'
+    coords="'coords'"
+    click='view.markerClick(coords)'>
   </ui-gmap-markers>
 
 </ui-gmap-google-map>
@@ -13,7 +14,7 @@
 <div class="peaks">
   <div class="peak" ng-repeat="peak in view.peaks">
     <div class="peakInfo">
-      <a href="/peak" ng-click="peakSelect(peak.osm_id, peak.lat, peak.lon)">{{peak.address.peak}}</a>
+      <a href="/peak" ng-click="peakSelect(peak.osm_id, peak.coords)">{{peak.id}}. {{peak.name}}</a>
     </div>
   </div>
 </div>

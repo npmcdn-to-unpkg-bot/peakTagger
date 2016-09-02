@@ -8,10 +8,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "HomeController",
       templateUrl: "partials/home.html"
     })
-    .state('main', {
-      url: '/main',
-      controller: "MainController",
-      templateUrl: "partials/main.html"
+    .state('peaksearch', {
+      url: '/peaksearch',
+      controller: "PeakSearchController",
+      templateUrl: "partials/peaksearch.html"
+    })
+    .state('peaks', {
+      url: '/peaks',
+      controller: "PeaksController",
+      templateUrl: "partials/peaks.html"
     })
     .state('peak', {
       url: '/peak',

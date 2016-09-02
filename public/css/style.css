@@ -39,6 +39,15 @@ header .logo {
   color: #999;
 }
 
+.nav .peaksLink {
+  display: inline-block;
+}
+
+.nav .peakSearch {
+  display: inline-block;
+  margin: 0;
+}
+
 
 /* HOME */
 
@@ -62,7 +71,7 @@ header .logo {
 
 .angular-google-map-container {
   height: 600px;
-  width: 50%;
+  width: 60%;
   float: left;
 }
 
@@ -77,15 +86,15 @@ header .logo {
 
 /* PEAK */
 
-.peakStats {
-  display: inline-block;
-  vertical-align: top;
-}
-
 .peakMap {
   display: inline-block;
   height: 600px;
-  width: 50%;
+  width: 60%;
+}
+
+.peakStats {
+  display: inline-block;
+  vertical-align: top;
 }
 
 /* FOOTER */

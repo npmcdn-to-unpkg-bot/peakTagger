@@ -26,9 +26,14 @@
   <script type="text/javascript" src="js/services.js"></script>
 </head>
 <body>
-  <header>
+  <header ng-controller="HeadController">
     <div class="nav">
-      <a href="/main">Nearby Peaks</a>
+      <a class="peaksLink" href="/peaks">Find nearby peaks</a>
+      <!-- <button><a class="peaksLink" href="/peaks">Find nearby peaks</a></button> -->
+      <!-- <form class="peakSearch">
+        <input type="text" name="search" ng-model="view.search" placeholder="Search for a peak">
+        <button ng-click="peakSearch()">Go</button>
+      </form> -->
     </div>
     <div class="auth">
       <a href="/signout">Signout</a>
@@ -39,9 +44,9 @@
       <a href="/"><img src="/images/peak_tagger_logo.png"></a>
     </div>
   </header>
-  <main ui-view>
 
-  </main>
+  <main ui-view></main>
+
   <footer>
     <p>Copyright 2016 Peak Tagger</p>
   </footer>
