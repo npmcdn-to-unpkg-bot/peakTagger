@@ -54,6 +54,7 @@ header .logo {
 .jumbo {
   width: 100%;
   /* FIX ME */
+  margin: 0 auto;
   height: 1000px;
   position: absolute;
   background-image: url('../images/mainpicTrim2.jpg');
