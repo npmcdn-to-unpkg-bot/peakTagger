@@ -6,12 +6,20 @@
   <ui-gmap-markers
     models='view.peaks'
     coords="'coords'"
-    click='view.markerClick(coords)'>
+    click='markerClick(coords)'>
   </ui-gmap-markers>
 
 </ui-gmap-google-map>
 
 <div class="peaks">
+  <div class="peakSearch">
+    <h1>Look elsewhere</h1>
+    <form>
+      <input type="text" name="peakname" ng-model="view.peakname" placeholder="Search peak">
+      <input type="text" name="town" ng-model="view.town" placeholder="Search by town">
+      <button ng-click="searchPeak()">Go!</button>
+    </form>
+  </div>
   <div class="peak" ng-repeat="peak in view.peaks">
     <div class="peakInfo">
       <a href="/peak" ng-click="peakSelect(peak.osm_id, peak.coords)">{{peak.id}}. {{peak.name}}</a>

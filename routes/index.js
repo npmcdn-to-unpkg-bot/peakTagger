@@ -23,7 +23,7 @@ router.get('/peaksearch/:lat/:lon', function(req, res, next) {
 router.get('/peaknamesearch/:name', function(req, res, next) {
   var name = req.params.name;
   console.log(name);
-  var url = `https://nominatim.openstreetmap.org/search?format=json&q=[peak]+${name}`;
+  var url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=[peak]+${name}`;
   console.log(url);
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
