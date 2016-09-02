@@ -38,6 +38,7 @@ app.controller('PeaksController', function($scope, $http, locateService, peakSer
       })
       $scope.view.peaks = arr.map(function(peak, i) {
         peak.id = i + 1;
+        peak.options = {labelClass: 'marker_labels', labelAnchor: '12 60', labelContent: peak.id};
         return peak;
       })
 
@@ -71,8 +72,8 @@ app.controller('PeaksController', function($scope, $http, locateService, peakSer
 
   $scope.searchPeak = function() {
     if ($scope.view.peakname) var url = `/peaknamesearch/${$scope.view.peakname}`;
-    else if ($scope.view.town) var url = `/peaktownsearch/${$scope.view.town}`;
-    else if ($scope.view.peakname && $scope.view.town) var url = `/peaknametownsearch/${$scope.view.peakname}/${$scope.view.town}`;
+    else if ($scope.view.place) var url = `/peaknamesearch/${$scope.view.place}`;
+    else if ($scope.view.peakname && $scope.view.place) var url = `/peaknamesearch/${$scope.view.peakname}+${$scope.view.place}`;
     $http.get(url).then(function(data) {
       // $scope.view.peaks = parsePeaks(data.data);
 
@@ -124,3 +125,15 @@ app.controller('PeakController', ['$scope', '$http', 'olData', 'peakService', fu
     $scope.view.peak.ele = Math.floor(data.data.ele * 3.2808);
   })
 }]);
+
+app.controller('RoutetestController', function($scope, $http, locateService, uiGmapGoogleMapApi) {
+  $scope.view = {};
+  var lat = locateService.position.coords.latitude, lon = locateService.position.coords.longitude;
+  $scope.view.map = { center: { latitude: lat, longitude: lon }, zoom: 13 };
+  $scope.view.options = { mapTypeId: 'terrain' };
+  uiGmapGoogleMapApi.then(function(){
+    $scope.view.polylines = {
+      path: [{latitude: -105.253847,longitude: 40.005177},{latitude: -105.254374,longitude: 40.005181},{latitude: -105.254392,longitude: 40.006605},{latitude: -105.254843,longitude: 40.007069},{latitude: -105.259412,longitude: 40.007214},{latitude: -105.259981,longitude: 40.007974},{latitude: -105.266299,longitude: 40.008135},{latitude: -105.267351,longitude: 40.008361},{latitude: -105.269343,longitude: 40.009435},{latitude: -105.27374,longitude: 40.009467},{latitude: -105.276756,longitude: 40.010508},{latitude: -105.282295,longitude: 40.010498},{latitude: -105.283457,longitude: 40.013424},{latitude: -105.283239,longitude: 40.015101},{latitude: -105.284903,longitude: 40.02044},{latitude: -105.293037,longitude: 40.020545},{latitude: -105.29408,longitude: 40.02064},{latitude: -105.296162,longitude: 40.021552},{latitude: -105.29806,longitude: 40.021506},{latitude: -105.299186,longitude: 40.025008},{latitude: -105.29978,longitude: 40.025598},{latitude: -105.300202,longitude: 40.026763},{latitude: -105.303372,longitude: 40.029973},{latitude: -105.304538,longitude: 40.032573},{latitude: -105.305724,longitude: 40.033992},{latitude: -105.305314,longitude: 40.03441}]
+    }
+  });
+});

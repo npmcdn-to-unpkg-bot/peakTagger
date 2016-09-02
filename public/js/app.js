@@ -23,6 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "PeakController",
       templateUrl: "partials/peak.html"
     })
+    .state('routetest', {
+      url: '/routetest',
+      controller: "RoutetestController",
+      templateUrl: "partials/routetest.html"
+    })
     $locationProvider.html5Mode(true);
 })
 .config(function(uiGmapGoogleMapApiProvider) {
