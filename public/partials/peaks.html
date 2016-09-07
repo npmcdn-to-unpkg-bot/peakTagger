@@ -13,18 +13,19 @@
 </ui-gmap-google-map>
 
 <div class="peaks">
-  <div class="peakSearch">
-    <h1>Look elsewhere</h1>
-    <form>
-      <p>You can search by peak name or place or both</p>
-      <p>(example: Long's Peak Colorado)</p>
-      <input type="text" name="peakname" ng-model="view.peakname" placeholder="Search by names">
-      <button ng-click="searchPeak()">Go!</button>
-    </form>
-  </div>
+  <h3>Based on your current location, this is a list of peaks in order from nearest to furthest:</h3>
   <div class="peak" ng-repeat="peak in view.peaks">
     <div class="peakInfo">
       <a href="/peak" ng-click="peakSelect(peak.osm_id, peak.coords)">{{peak.id}}. {{peak.name}}</a>
     </div>
   </div>
+</div>
+
+<div class="peakSearch">
+  <h3>Or you can search by peak name, or place, or both.</h3>
+  <p>(example: Long's Peak Colorado)</p>
+  <form>
+    <input type="text" name="peakname" ng-model="view.peakname" placeholder="Search by names">
+    <button ng-click="searchPeak()">Go</button>
+  </form>
 </div>

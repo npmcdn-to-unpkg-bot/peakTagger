@@ -70,7 +70,11 @@ header .logo {
 
 .description h1 {
   text-align: center;
-  margin: 20px
+  margin: 20px;
+}
+
+.description p {
+  font-size: 1.5em;
 }
 
 
@@ -83,8 +87,19 @@ header .logo {
 }
 
 .peaks {
-  height: 600px;
+  padding: 30px;
+  height: 425px;
   overflow: auto;
+}
+
+.peakSearch {
+  padding: 30px;
+  height: 175px;
+  overflow: hidden;
+}
+
+.peakSearch form {
+  margin-top: 10px;
 }
 
 .peak {
