@@ -1,6 +1,7 @@
 var app = angular.module('peakTagger', ['ui.router', 'uiGmapgoogle-maps', 'openlayers-directive']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+  $httpProvider.interceptors.push('jwtInterceptor');
   $urlRouterProvider.otherwise("/");
   $stateProvider
     .state('home', {
@@ -28,7 +29,20 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "RoutetestController",
       templateUrl: "partials/routetest.html"
     })
+    .state('auth', {
+      url: '/auth',
+      controller: "AuthController",
+      templateUrl: "partials/auth.html"
+    })
     $locationProvider.html5Mode(true);
+})
+.service('jwtInterceptor', function jwtInterceptor(){
+  return {
+    request: function(config){
+      config.headers.Authorization = 'Bearer ' + localStorage.jwt;
+      return config;
+    }
+  };
 })
 .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({

@@ -1,0 +1,13 @@
+<button ng-click="testFun()">Test Fun</button>
+
+<form>
+  <input type="text" name="signinEmail" ng-model="view.signin.email" placeholder="Email">
+  <input type="text" name="signinPassword" ng-model="view.signin.password" placeholder="Password">
+  <button ng-submit="sendSignIn()">Sign in</button>
+</form>
+
+<form>
+  <input type="text" name="signupEmail" ng-model="view.signup.email" placeholder="Email">
+  <input type="text" name="signupPassword" ng-model="view.signup.password" placeholder="Password">
+  <button ng-click="sendSignUp()">Sign up</button>
+</form>

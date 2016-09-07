@@ -9,7 +9,6 @@ html * {
 
 header {
   padding: .2em;
-  background-color: #fff;
   border-bottom: 1px solid lightblue;
 }
 
@@ -29,8 +28,6 @@ header .logo {
 }
 
 .nav a, .auth a {
-  /*margin: 1em 2em;
-  font-size: 1.5em;*/
   text-decoration: none;
   color: #000;
 }
@@ -53,20 +50,23 @@ header .logo {
 
 .jumbo {
   width: 100%;
-  /* FIX ME */
-  margin: 0 auto;
-  height: 1000px;
-  position: absolute;
+  margin: 0 auto; /* FIX ME */
   background-image: url('../images/mainpicTrim2.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.jumbo h1 {
-  text-shadow: 0px 1px 1px #999;
-  width: 300px;
-  margin: 160px auto;
+.description {
+  margin: 200px auto;
+  max-width: 1028px;
+  padding: 50px;
 }
+
+.description h1 {
+  text-align: center;
+  margin: 20px
+}
+
 
 /* MAIN */
 
@@ -85,6 +85,7 @@ header .logo {
   margin: 20px 40px;
 }
 
+
 /* PEAK */
 
 .peakMap {
@@ -94,14 +95,35 @@ header .logo {
 }
 
 .peakStats {
+  margin: 50px;
   display: inline-block;
   vertical-align: top;
 }
 
+
 /* FOOTER */
 
 footer {
-  height: 100px;
-  padding: 20px;
+  /*height: 100px;*/
+  padding: 3em;
   border-top: 1px solid lightgreen;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1440px) {
+  .jumbo {
+    height: 805px;
+  }
+}
+@media (max-width: 1280px) {
+  .jumbo {
+    height: 720px;
+  }
+}
+@media (max-width: 1024px) {
+  .jumbo {
+    height: 575px;
+  }
 }
