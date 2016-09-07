@@ -1,8 +1,15 @@
 app.controller('HeadController', function($scope, $state, locateService, peakService) {
+  $scope.view = {};
+  // $scope.view.locate = false;
   new Promise(function(resolve) {
     locateService.locate(resolve);
   }).then(function(position) {
     locateService.position = position;
+    // $scope.view.locate = true;
+    // if (position.complete) {
+      $('.loading').hide();
+      $('.peaksLink').show();
+    // }
     console.log(position.coords.latitude + ", " + position.coords.longitude);
   });
   $scope.peakSearch = function() {

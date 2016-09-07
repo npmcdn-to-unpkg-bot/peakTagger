@@ -37,13 +37,19 @@ header .logo {
 }
 
 .nav .peaksLink {
-  display: inline-block;
+  display: none;
 }
 
-.nav .peakSearch {
+.nav .loading {
+  height: 3em;
+  width: 3em;
+  margin-top: -10px;
+}
+
+/*.nav .peakSearch {
   display: inline-block;
   margin: 0;
-}
+}*/
 
 
 /* HOME */
